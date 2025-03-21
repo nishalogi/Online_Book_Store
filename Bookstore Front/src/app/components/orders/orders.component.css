@@ -1,0 +1,129 @@
+/* Container Styling */
+.container {
+    max-width: 90%;
+    margin: auto;
+    padding: 100px;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Header */
+.table thead th {
+    background-color: #007bff;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    text-align: center;
+}
+
+/* Table Cells */
+.table tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Alternating Row Colors */
+.table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Status Text Colors */
+.text-success {
+    font-weight: bold;
+    color: #28a745 !important;
+}
+
+.text-danger {
+    font-weight: bold;
+    color: #dc3545 !important;
+}
+
+.text-warning {
+    font-weight: bold;
+    color: #ffc107 !important;
+}
+
+/* Action Buttons - Centering & Styling */
+td:last-child {
+    width: 200px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* Button Styling */
+.action-buttons .btn {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Button Hover Effects */
+.action-buttons .btn-primary:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.action-buttons .btn-danger:hover {
+    background-color: #c82333;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table thead {
+        display: none;
+    }
+
+    .table,
+    .table tbody,
+    .table tr,
+    .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: white;
+    }
+
+    .table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #333;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}

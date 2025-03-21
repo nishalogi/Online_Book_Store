@@ -1,0 +1,48 @@
+.dashboard-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.stat-card {
+    background: #3498db;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.low-stock-section {
+    margin-top: 30px;
+}
+
+.low-stock-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.low-stock-section th,
+.low-stock-section td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.low-stock-section th {
+    background: #2c3e50;
+    color: white;
+}
+
+.low-stock {
+    color: red;
+    font-weight: bold;
+}

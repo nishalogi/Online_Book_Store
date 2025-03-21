@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <h2>Your Orders</h2>
+
+    <!-- Show Error Message -->
+    <p *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</p>
+
+    <table class="table table-bordered" *ngIf="orders.length > 0">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Total Price</th>
+                <th>Books</th> <!-- ✅ Added Book Titles -->
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of orders">
+                <td>{{ order.orderId }}</td>
+                <td>{{ order.orderDate | date:'yyyy-MM-dd HH:mm' }}</td>
+                <td>${{ order.totalPrice }}</td>
+                
+                <td>{{ order.bookTitles }}</td> <!-- ✅ Display Book Titles -->
+                <td>
+                    <span 
+                        [ngClass]="{
+                            'text-success': order.status === 'SHIPPED',
+                            'text-danger': order.status === 'CANCELLED',
+                            'text-warning': order.status === 'PENDING'
+                        }">
+                        {{ order.status === 'CANCELLED' ? 'Cancelled' : order.status === 'SHIPPED' ? 'Shipped' : 'Pending' }}
+                    </span>
+                </td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary btn-sm" (click)="viewOrder(order.orderId)">View</button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteOrder(order.orderId)">Delete</button>
+                    </div>
+                </td>
+                
+
+                
+            </tr>
+        </tbody>
+    </table>
+</div>

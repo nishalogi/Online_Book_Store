@@ -1,0 +1,45 @@
+<h2>Checkout</h2>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
+    
+    <!-- Address -->
+    <label for="address">Address:</label>
+    <textarea id="address" formControlName="address" required></textarea>
+    <div *ngIf="checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched">
+        <small class="error">Address is required.</small>
+    </div>
+
+    <!-- Phone Number -->
+    <label for="phone">Phone Number:</label>
+    <input id="phone" type="text" formControlName="phoneNumber" required />
+    <div *ngIf="checkoutForm.get('phoneNumber')?.invalid && checkoutForm.get('phoneNumber')?.touched">
+        <small class="error">Enter a valid 10-digit phone number.</small>
+    </div>
+
+    <!-- Payment Method -->
+    <select formControlName="paymentMethod">
+        <option value="CASH_ON_DELIVERY">Cash on Delivery</option>
+        <option value="ONLINE_PAYMENT">Credit Card</option>
+        <option value="PAYPAL">PayPal</option>
+    </select>
+    
+
+    <!-- Cart Items -->
+    <h3>Your Cart</h3>
+    <div *ngIf="cartItems.length === 0">
+        <p>Your cart is empty! Please add books before checkout.</p>
+    </div>
+    <ul *ngIf="cartItems.length > 0">
+        <li *ngFor="let item of cartItems">
+            <strong>{{ item.book.title }}</strong> - {{ item.quantity }} x ${{ item.book.price }}
+        </li>
+    </ul>
+
+    <!-- Total Price -->
+    <h4>Total: ${{ cartTotal }}</h4>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="checkoutForm.invalid || cartItems.length === 0">
+        Place Order
+    </button>
+</form>

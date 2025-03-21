@@ -1,0 +1,69 @@
+<div class="book-details">
+    <h2>{{ book.title }}</h2>
+    <img [src]="book.imageUrl" alt="{{ book.title }}" class="book-image">
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Price:</strong> ${{ book.price }}</p>
+    <p><strong>Description:</strong> {{ book.description }}</p>
+
+    <button class="btn btn-primary" (click)="addToCart(book)">Add to Cart</button>
+    <button class="btn btn-success" (click)="buyNow()">Buy Now</button>
+
+    <div *ngIf="isBuyingNow" class="order-form">
+        <h3>Complete Your Order</h3>
+        <form [formGroup]="orderForm" (ngSubmit)="placeOrder()">
+            <label for="address">Address:</label>
+            <input id="address" type="text" formControlName="address" required>
+
+            <label>📞 Phone Number:</label>
+            <input type="tel" formControlName="phoneNumber" placeholder="Enter phone number" required>
+
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" formControlName="paymentMethod">
+                <option *ngFor="let method of paymentMethods" [value]="method.value">
+                    {{ method.label }}
+                </option>
+            </select>
+
+            <button type="submit" class="btn btn-success">Place Order</button>
+        </form>
+    </div>
+
+    <!-- Order Success Popup -->
+    <div *ngIf="showOrderSuccessPopup" class="popup">
+        <p>{{ orderSuccessMessage }}</p>
+    </div>
+
+    <!-- ✅ Review Section -->
+    <div class="reviews-section">
+        <h3>📢 Customer Reviews</h3>
+
+        <!-- Display Reviews -->
+        <div *ngIf="reviews.length > 0; else noReviews">
+            <div *ngFor="let review of reviews" class="review">
+                <p><strong>⭐ Rating:</strong> {{ review.rating }}/5</p>
+                <p><strong>💬 Comment:</strong> {{ review.comment }}</p>
+                <hr>
+            </div>
+        </div>
+        <ng-template #noReviews>
+            <p>No reviews yet. Be the first to review this book!</p>
+        </ng-template>
+
+        <!-- Add Review Form -->
+        <div *ngIf="userId">
+            <h4>📝 Leave a Review</h4>
+            <form [formGroup]="reviewForm" (ngSubmit)="addReview()">
+                <label for="rating">⭐ Rating (1-5):</label>
+                <input id="rating" type="number" formControlName="rating" min="1" max="5" required>
+
+                <label for="comment">💬 Comment:</label>
+                <textarea id="comment" formControlName="comment" required></textarea>
+
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+        <div *ngIf="!userId">
+            <p>🔒 <a routerLink="/login">Login</a> to submit a review.</p>
+        </div>
+    </div>
+</div>

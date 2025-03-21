@@ -1,0 +1,25 @@
+<div class="book-list">
+    <h2>Available Books</h2>
+
+
+
+    <!-- Book List -->
+    <div class="books-container">
+        <div class="book-card" *ngFor="let book of filteredBooks">
+            <img [src]="book.imageUrl" alt="{{ book.title }}" class="book-image">
+
+            <div class="book-info">
+                <h3>{{ book.title }}</h3>
+                <p class="author">Author: {{ book.author }}</p>
+                <p class="price">Price: ₹{{ book.price }}</p>
+
+                <!-- View Details Button -->
+                <a [routerLink]="['/book-details', book.id]" class="details-btn">
+                    View Details
+                </a>
+
+                
+            </div>
+        </div>
+    </div>
+</div>

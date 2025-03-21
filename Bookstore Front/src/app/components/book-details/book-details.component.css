@@ -1,0 +1,140 @@
+/* ✅ Book Details Container */
+.book-details {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 65px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: hwb(183 63% 14%);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* ✅ Book Image */
+.book-image {
+    width: 200px; /* ✅ Smaller image */
+    height: 250px; /* ✅ Fixed height */
+    object-fit: contain; /* ✅ Ensures full image is visible */
+    border-radius: 5px;
+    margin: 15px auto; /* ✅ Centers the image */
+    display: block;
+    border: 1px solid #ddd;
+    padding: 5px;
+    background-color: #fff;
+}
+
+/* ✅ Book Title */
+h2 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ✅ Book Info (Author, Price, Description) */
+p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+}
+p strong {
+    color: #222;
+}
+
+/* ✅ Buttons (Add to Cart, Buy Now) */
+button {
+    width: 50%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+.btn-success:hover {
+    background-color: #1e7e34;
+}
+
+/* ✅ Order Form */
+.order-form {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+input, select, textarea {
+    width: 60%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* ✅ Reviews Section */
+.reviews-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f0f8ff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+.review {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.review:last-child {
+    border-bottom: none;
+}
+
+/* ✅ Review Form */
+textarea {
+    height: 50px;
+    resize: vertical;
+}
+
+/* ✅ Popup Message */
+.popup {
+    text-align: center;
+    background: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 600px) {
+    .book-details {
+        max-width: 100%;
+        padding: 15px;
+    }
+    .book-image {
+        width: 180px;
+        height: 220px;
+    }
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

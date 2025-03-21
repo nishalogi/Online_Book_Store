@@ -1,0 +1,31 @@
+<header>
+    <nav>
+        <div class="logo">Bookstore</div>
+        <ul>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/book-list">Books</a></li>
+            <li><a routerLink="/cart">Cart</a></li>
+            <li><a routerLink="/orders">Orders</a></li>
+
+            <!-- Show login/signup only when user is NOT logged in -->
+            <li *ngIf="!isLoggedIn()"><a routerLink="/login">Login</a></li>
+            <li *ngIf="!isLoggedIn()"><a routerLink="/signup">Signup</a></li>
+
+            <!-- Show Admin Panel link only for admin users -->
+            <li *ngIf="isLoggedIn() && isAdmin()"><a routerLink="/admin">Admin Panel</a></li>
+
+            <!-- Show logout button only when user is logged in -->
+            <li *ngIf="isLoggedIn()">
+                <button (click)="onLogout()" class="btn btn-danger">Logout</button>
+            </li>
+        </ul>
+
+        <div class="search-bar">
+            <input type="text" [(ngModel)]="searchQuery" placeholder="Search books..." />
+            <button (click)="searchBooks()">Search</button>
+        </div>
+    </nav>
+</header>
+
+
+

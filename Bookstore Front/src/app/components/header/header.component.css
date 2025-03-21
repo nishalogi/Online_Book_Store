@@ -1,0 +1,119 @@
+/* Header Styling */
+header {
+    background-color:hwb(186 13% 5%); /* Primary color */
+    padding: 15px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation bar */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes logout to right */
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Navigation Menu */
+ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin: 0 15px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+ul li a:hover {
+    color: #f8f9fa; /* Light hover effect */
+}
+
+/* Move Logout to the Right */
+ul li:last-child {
+    margin-left: auto; /* Push Logout to the right */
+}
+
+/* Logout Button */
+.btn-danger {
+    background-color:hwb(186 13% 5%);
+    border: none;
+    padding: 8px 12px;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background 0.3s ease-in-out;
+    font-weight: 549;
+    
+}
+
+.btn-danger:hover {
+    background-color: hwb(186 13% 5%);
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 200px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.search-bar button:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search-bar input {
+        width: 80%;
+    }
+}

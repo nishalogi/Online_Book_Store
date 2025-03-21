@@ -1,0 +1,54 @@
+/* Center the Table */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Adjust based on content */
+}
+
+/* Table Styling */
+.table {
+    width: 120%; /* Adjust the table width */
+    max-width: 900px; /* Prevents it from being too wide */
+    margin: auto; /* Ensures centering */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: white;
+}
+
+/* Table Header */
+.thead-dark th {
+    background-color: #007bff !important;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 12px;
+}
+
+/* Center text in table */
+td, th {
+    vertical-align: middle !important;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Status Dropdown */
+select.form-control {
+    width: 140px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Alternate Row Background */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa;
+}
+
+/* Hover Effect */
+.table-hover tbody tr:hover {
+    background-color: #e9ecef;
+    transition: 0.2s ease-in-out;
+}

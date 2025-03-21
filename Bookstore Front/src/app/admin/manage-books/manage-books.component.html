@@ -1,0 +1,143 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Manage Books</h2>
+
+    <!-- ✅ Book List -->
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category }}</td>
+                <td>{{book.quantity}}</td>
+                <td>${{ book.price }}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm me-2" (click)="editBook(book)">Edit</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteBook(book.id!)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ✅ Add New Book Form -->
+    <div class="card mt-4 p-3">
+        <h4 class="text-center">Add New Book</h4>
+        <form (ngSubmit)="addNewBook()">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control" [(ngModel)]="book.title" name="title" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Author</label>
+                    <input type="text" class="form-control" [(ngModel)]="book.author" name="author" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Category</label>
+                    <input type="text" class="form-control" [(ngModel)]="book.category" name="category" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" class="form-control" [(ngModel)]="book.quantity" name="quantity" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Price</label>
+                    <input type="number" class="form-control" [(ngModel)]="book.price" name="price" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Image URL</label>
+                    <input type="text" class="form-control" [(ngModel)]="book.imageUrl" name="imageUrl" required>
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" [(ngModel)]="book.description" name="description" required></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Add Book</button>
+        </form>
+    </div>
+
+    <!-- ✅ Edit Book Form (Only Visible When Editing) -->
+    <div *ngIf="showEditForm" class="edit-form-overlay">
+        <div class="edit-form">
+            <h4>Edit Book</h4>
+            <form (ngSubmit)="updateBook()">
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control" [(ngModel)]="selectedBook!.title" name="title" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Author</label>
+                    <input type="text" class="form-control" [(ngModel)]="selectedBook!.author" name="author" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <input type="text" class="form-control" [(ngModel)]="selectedBook!.category" name="category" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Price</label>
+                    <input type="number" class="form-control" [(ngModel)]="selectedBook!.price" name="price" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" [(ngModel)]="selectedBook!.description" name="description"
+                        required></textarea>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="button" class="btn btn-secondary" (click)="showEditForm = false">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ✅ Styles for the Edit Form Overlay -->
+<style>
+    .edit-form-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .edit-form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>

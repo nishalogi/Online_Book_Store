@@ -1,0 +1,53 @@
+/* Centering the Table */
+table {
+    width: 70%;
+    margin: 20px auto;  /* Centers the table */
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Header Styling */
+thead {
+    background: #007bff;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+th {
+    padding: 12px;
+    font-weight: bold;
+}
+
+/* Table Row & Cell Styling */
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;  /* Centers text inside cells */
+    font-size: 14px;
+}
+
+/* Alternating Row Colors for Better Readability */
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Hover Effect */
+tr:hover {
+    background: #e9f5ff;
+    transition: 0.3s ease-in-out;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    table {
+        width: 95%;
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+}

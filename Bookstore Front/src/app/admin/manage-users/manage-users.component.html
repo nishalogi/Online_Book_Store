@@ -1,0 +1,32 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <select [(ngModel)]="user.role" (change)="changeUserRole(user)">
+                    <option value="ROLE_USER">User</option>
+                    <option value="ROLE_ADMIN">Admin</option>
+                </select>
+            </td>
+            <td>
+                <select [(ngModel)]="user.status" (change)="changeUserStatus(user)">
+                    <option value="ACTIVE">Active</option>
+                    <option value="DISABLED">Disabled</option>
+                </select>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
