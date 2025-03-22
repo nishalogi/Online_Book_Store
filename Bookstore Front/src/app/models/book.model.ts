@@ -16,6 +16,6 @@ export interface Book {
     quantity: number;
     price: number;
     imageUrl: string;
-    reviews: Review[]; // Add this line
-    averageRating: number; // Add this line
+    reviews: Review[]; 
+    averageRating: number; 
 }
