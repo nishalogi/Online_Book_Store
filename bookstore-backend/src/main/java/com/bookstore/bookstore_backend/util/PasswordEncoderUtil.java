@@ -30,8 +30,8 @@ System.out.println("INSERT INTO users (name, email, password, role) VALUES ('"
 
 //Generate password hash for Admin
 String adminName = "Admin";
-String adminEmail = "logeshwarivijay16@gmail.com";
-String adminPassword = "logeshwarinisha";
+String adminEmail = "Admin@example.com";
+String adminPassword = "password123";
 String adminEncodedPassword = encoder.encode(adminPassword);
 String adminRole = "ROLE_ADMIN";
 
