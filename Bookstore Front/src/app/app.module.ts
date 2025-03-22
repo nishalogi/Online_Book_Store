@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // ✅ Needed for [(ngModel)] in forms
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http'; // ✅ Handles API requests
+import { FormsModule } from '@angular/forms'; 
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http'; 
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -15,12 +15,11 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
-import { SignupComponent } from './components/signup/signup.component'; // ✅ Add SignupComponent
-
+import { SignupComponent } from './components/signup/signup.component'; 
 
 
 // Modules
-import { BookModule } from './modules/book/book.module'; // ✅ Import BookModule
+import { BookModule } from './modules/book/book.module'; 
 
 // Services
 import { CartService } from './services/cart.service';
