@@ -60,10 +60,10 @@ public class UserService {
 	        }
 
 	        User user = new User();
-	        user.setName(request.getName());  // ✅ Added name field
+	        user.setName(request.getName()); 
 	        user.setEmail(request.getEmail());
 	        user.setPassword(passwordEncoder.encode(request.getPassword()));
-	        user.setRole("ROLE_USER");  // Default role
+	        user.setRole("ROLE_USER");  
 
 	        return userRepository.save(user);
 	    }
@@ -76,18 +76,18 @@ public class UserService {
 	        userRepository.deleteById(userId);
 	    }
 
-	    public void updateUserRole(Long userId, String role) { // i need to send this 
+	    public void updateUserRole(Long userId, String role) { 
 	        User user = userRepository.findById(userId)
 	                .orElseThrow(() -> new RuntimeException("User not found"));
 	        user.setRole(role);
 	        userRepository.save(user);
 	    }
 	    
-	    public Optional<User> findById(Long id) {  // ✅ Fix: Use Optional<User>
+	    public Optional<User> findById(Long id) {  
 	        return userRepository.findById(id);
 	    }
 
-	    public void save(User user) {   // ✅ Ensure this method exists
+	    public void save(User user) {  
 	        userRepository.save(user);
 	    }
 	    
