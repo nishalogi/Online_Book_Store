@@ -35,7 +35,7 @@ public class EmailService {
             helper.setSubject("Order Cancellation Notification");
             helper.setText("<p>Your order with <strong>Order ID: " + orderId + "</strong> has been canceled successfully.</p>", true);
 
-            helper.setFrom("logeshwarivijay16@gmail.com");
+            helper.setFrom("Admin@example.com");
 
             mailSender.send(message);
             System.out.println("Cancellation email sent successfully.");
