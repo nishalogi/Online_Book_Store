@@ -14,12 +14,12 @@ import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
-  { path: 'home', component: HomeComponent }, // ✅ Route for home
+  { path: 'home', component: HomeComponent }, //  Route for home
   { path: 'book-list', component: BookListComponent },
-  { path: 'book-details/:id', component: BookDetailsComponent }, // ✅ Dynamic Book Details Route
+  { path: 'book-details/:id', component: BookDetailsComponent }, 
   { path: 'cart', component: CartComponent },
-  { path: 'orders', component: OrdersComponent }, // ✅ Can add authentication guard later
-  { path: 'checkout', component: CheckoutComponent }, // ✅ Can add authentication guard later
+  { path: 'orders', component: OrdersComponent }, 
+  { path: 'checkout', component: CheckoutComponent }, 
   { path: 'login', component: LoginComponent },
   { path: 'order-details/:id', component: OrderDetailsComponent },
   { path: '', redirectTo: '/orders', pathMatch: 'full' },
