@@ -97,7 +97,7 @@ export class BookDetailsComponent implements OnInit {
 
     this.reviewService.addReview(reviewData.bookId, reviewData.userId, reviewData.rating, reviewData.comment).subscribe({
       next: () => {
-        alert('✅ Review added successfully!');
+        alert(' Review added successfully!');
         this.reviewForm.reset();
         this.fetchReviews(this.book.id); // Refresh reviews after adding a new one
       },
@@ -155,7 +155,7 @@ export class BookDetailsComponent implements OnInit {
         this.orderForm.reset();
         this.isBuyingNow = false;
 
-        // ✅ Hide success message after 2 seconds instead of redirecting
+        //  Hide success message after 2 seconds instead of redirecting
         setTimeout(() => {
           this.showOrderSuccessPopup = false;
         }, 2000);
