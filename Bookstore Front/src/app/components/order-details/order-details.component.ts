@@ -13,7 +13,7 @@ export class OrderDetailsComponent implements OnInit {
   order: any = null;
   errorMessage: string = '';
   isCanceling: boolean = false;
-  orderCancelled: boolean = false; // ✅ Add this property
+  orderCancelled: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private orderService: OrderService) {}
 
@@ -54,7 +54,7 @@ export class OrderDetailsComponent implements OnInit {
       () => {
         alert('✅ Order canceled successfully!');
         this.order.status = 'CANCELLED'; 
-        this.orderCancelled = true; // ✅ Set this to true when canceled
+        this.orderCancelled = true; 
       },
       (error) => {
         alert('❌ Failed to cancel order. Try again.');
@@ -69,7 +69,7 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/orders']);  // Change to your actual orders page route
+    this.router.navigate(['/orders']);  
 }
 
   
