@@ -34,7 +34,7 @@ export class ManageBooksComponent implements OnInit {
     this.loadBooks();
   }
 
-  // ✅ Load Books
+  // Load Books
   loadBooks() {
     this.bookService.getAllBooks().subscribe({
       next: (data) => this.books = data,
@@ -45,14 +45,14 @@ export class ManageBooksComponent implements OnInit {
     });
   }
 
-  // ✅ Open Edit Form
+  //  Open Edit Form
   editBook(book: Book) {
     this.selectedBook = { ...book };
     this.showEditForm = true;
   }
 
 
-  // ✅ Update Book
+  //  Update Book
   updateBook() {
     if (!this.selectedBook || !this.selectedBook.id) {
       console.error("No book selected for update.");
@@ -86,9 +86,9 @@ export class ManageBooksComponent implements OnInit {
       });
   }
 
-  // ✅ Add New Book
+  //  Add New Book
   addNewBook() {
-    const token = localStorage.getItem('adminToken'); // ✅ Ensure admin authentication
+    const token = localStorage.getItem('adminToken'); 
     if (!token) {
       console.error("No admin token found. Please log in as an admin.");
       alert("Unauthorized access. Please log in as an admin.");
@@ -96,12 +96,12 @@ export class ManageBooksComponent implements OnInit {
     }
   
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,  // ✅ Include the token
+      'Authorization': `Bearer ${token}`,  
       'Content-Type': 'application/json'
     });
   
     const newBook: Book = {
-      id: null,  // ✅ Ensure ID is null
+      id: null,  //  Ensure ID is null
       title: this.book.title,
       author: this.book.author,
       description: this.book.description,
@@ -117,7 +117,7 @@ export class ManageBooksComponent implements OnInit {
       next: () => {
         alert('Book added successfully!');
         this.book = { id: null, title: '', author: '', description: '',category:'', quantity: 0, price: 0, imageUrl: '', reviews: [], averageRating: 0 };
-        this.loadBooks(); // Refresh list
+        this.loadBooks(); 
       },
       error: (error) => {
         console.error('Error adding book:', error);
@@ -130,7 +130,7 @@ export class ManageBooksComponent implements OnInit {
     const confirmed = window.confirm('Are you sure you want to delete this book?');
   
     if (!confirmed) {
-      return; // Stop if user cancels
+      return; 
     }
   
     const token = localStorage.getItem('token'); // Get JWT token
@@ -145,7 +145,7 @@ export class ManageBooksComponent implements OnInit {
     this.bookService.deleteBook(bookId, headers).subscribe(
       (response) => {
         console.log('Book deleted successfully:', response);
-        this.loadBooks(); // Refresh book list after deletion
+        this.loadBooks(); 
       },
       (error) => {
         console.error('Error deleting book:', error);
