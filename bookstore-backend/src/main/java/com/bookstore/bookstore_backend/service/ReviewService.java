@@ -24,7 +24,7 @@ public class ReviewService {
 	    @Autowired
 	    private UserRepository userRepository;
 
-	    // ✅ Add a new review
+	  
 	    public Review addReview(Long userId, Long bookId, int rating, String comment) {
 	        Optional<User> user = userRepository.findById(userId);
 	        Optional<Book> book = bookRepository.findById(bookId);
@@ -41,13 +41,12 @@ public class ReviewService {
 	        }
 	    }
 
-	    // ✅ Get all reviews for a book
+	 
 	    public List<Review> getReviewsByBook(Long bookId) {
 	        Optional<Book> book = bookRepository.findById(bookId);
 	        return book.map(reviewRepository::findByBook).orElseThrow(() -> new RuntimeException("Book not found"));
 	    }
 
-	    // ✅ Delete a review (admin only)
 	    public void deleteReview(Long reviewId) {
 	        reviewRepository.deleteById(reviewId);
 	    }
