@@ -12,7 +12,7 @@ import com.bookstore.bookstore_backend.model.User;
 public class OrderResponse {
 	private Long orderId;
     private User user;
-    private List<Book> books;  // Book details included
+    private List<Book> books;  
     private List<Integer> quantities;
     private double totalPrice;
     private String address;
