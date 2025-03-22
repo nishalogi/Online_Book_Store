@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-header',
   standalone: false,
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'] // ✅ Fixed typo
+  styleUrls: ['./header.component.css'] 
 })
 export class HeaderComponent {
   searchQuery: string = '';
@@ -33,9 +33,9 @@ export class HeaderComponent {
 }
 
 isAdmin(): boolean {
-  const role = localStorage.getItem('role')?.toUpperCase(); // Convert to uppercase
+  const role = localStorage.getItem('role')?.toUpperCase(); 
   console.log('User Role:', role);
-  return role === 'ROLE_ADMIN'; // Now it always matches
+  return role === 'ROLE_ADMIN'; 
 }
 
 
