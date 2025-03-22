@@ -36,7 +36,7 @@ public class CartController {
     @Autowired
     private UserRepository userRepository;
 
-    // ✅ Get cart items for logged-in user
+    //  Get cart items for logged-in user
     @GetMapping
     public ResponseEntity<List<Map<String, Object>>> getCart(@AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
@@ -50,13 +50,13 @@ public class CartController {
 
         List<Cart> cartItems = cartService.getCartItems(user.get());
         
-        // ✅ Build correct JSON response
+        //  Build correct JSON response
         List<Map<String, Object>> response = cartItems.stream().map(cart -> {
             Map<String, Object> item = new HashMap<>();
             item.put("id", cart.getId());
             item.put("quantity", cart.getQuantity());
             
-            // ✅ Ensure correct book data is used
+           
             Map<String, Object> bookData = new HashMap<>();
             bookData.put("id", cart.getBook().getId());
             bookData.put("title", cart.getBook().getTitle());
@@ -73,7 +73,7 @@ public class CartController {
     }
 
 
-    // ✅ Add book to cart using JSON body
+    
     @PostMapping("/add")
     public ResponseEntity<?> addToCart(@RequestBody Map<String, Object> request, 
                                        @AuthenticationPrincipal UserDetails userDetails) {
@@ -105,7 +105,7 @@ public class CartController {
     }
 
 
-    // ✅ Clear entire cart for the logged-in user
+  
     @DeleteMapping("/clear")
     public ResponseEntity<Void> clearCart(@AuthenticationPrincipal UserDetails userDetails) {
         if (userDetails == null) {
