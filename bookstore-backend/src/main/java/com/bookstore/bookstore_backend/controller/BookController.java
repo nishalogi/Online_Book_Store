@@ -27,13 +27,13 @@ public class BookController {
 	@Autowired
     private BookService bookService;
 
-    // 1️⃣ Get all books (Everyone can access)
+    // 1️ Get all books (Everyone can access)
     @GetMapping
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
-    // 2️⃣ Get a single book by ID (Everyone can access)
+    // 2️ Get a single book by ID (Everyone can access)
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
         Optional<Book> book = bookService.getBookById(id);
@@ -41,14 +41,14 @@ public class BookController {
                    .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // 3️⃣ Add a new book (🔒 Admin only)
+    // 3️ Add a new book ( Admin only)
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/add")
     public Book addBook(@RequestBody Book book) {
         return bookService.addBook(book);
     }
 
-    // 4️⃣ Update an existing book (🔒 Admin only)
+    // 4️ Update an existing book ( Admin only)
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
@@ -60,7 +60,7 @@ public class BookController {
         }
     }
 
-    // 5️⃣ Delete a book (🔒 Admin only)
+    // 5️ Delete a book ( Admin only)
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
@@ -68,14 +68,14 @@ public class BookController {
         return ResponseEntity.noContent().build();
     }
 
-    // 6️⃣ Get books by category (Everyone can access)
+    // 6️ Get books by category (Everyone can access)
     @GetMapping("/category/{category}")
     public ResponseEntity<List<Book>> getBooksByCategory(@PathVariable String category) {
         List<Book> books = bookService.getBooksByCategory(category);
         return books.isEmpty() ? ResponseEntity.status(HttpStatus.NOT_FOUND).build() : ResponseEntity.ok(books);
     }
 
-    // 7️⃣ Search books by title (Everyone can access)
+    // 7️ Search books by title (Everyone can access)
     @GetMapping("/title/{title}")
     public ResponseEntity<List<Book>> searchBooksByTitle(@PathVariable String title) {
         List<Book> books = bookService.searchBooksByTitle(title);
