@@ -29,13 +29,13 @@ import com.bookstore.bookstore_backend.service.UserService;
 public class UserController {
 	 private final UserRepository userRepository;
 	    private final PasswordEncoder passwordEncoder;
-	    private final UserService userService; // ✅ Added UserService dependency
+	    private final UserService userService; 
 
 	    // Constructor-based injection
 	    public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder, UserService userService) {
 	        this.userRepository = userRepository;
 	        this.passwordEncoder = passwordEncoder;
-	        this.userService = userService; // ✅ Correctly initializing userService
+	        this.userService = userService; 
 	    }
 
 	    // Register a normal user
@@ -45,7 +45,7 @@ public class UserController {
 	            return ResponseEntity.badRequest().body("Email already exists");
 	        }
 	        user.setPassword(passwordEncoder.encode(user.getPassword()));
-	        user.setRole("ROLE_USER"); // Default role
+	        user.setRole("ROLE_USER"); 
 	        userRepository.save(user);
 	        return ResponseEntity.ok("User registered successfully!");
 	    }
@@ -57,15 +57,15 @@ public class UserController {
 	            return ResponseEntity.badRequest().body("Email already exists");
 	        }
 	        user.setPassword(passwordEncoder.encode(user.getPassword()));
-	        user.setRole("ROLE_ADMIN"); // Set role as admin
+	        user.setRole("ROLE_ADMIN"); 
 	        userRepository.save(user);
 	        return ResponseEntity.ok("Admin registered successfully!");
 	    }
 
-	    // ✅ Get all users (Fixed method call)
+	    //  Get all users (Fixed method call)
 	    @GetMapping
 	    public ResponseEntity<List<User>> getAllUsers() {
-	        List<User> users = userService.getAllUsers(); // ✅ Use instance, not static reference
+	        List<User> users = userService.getAllUsers(); 
 	        return ResponseEntity.ok(users);
 	    }
 	    @DeleteMapping("/{id}")
@@ -75,11 +75,11 @@ public class UserController {
 	        return ResponseEntity.ok("User deleted successfully!");
 	    }
 	    
-	    @PutMapping("/{id}/role") // this too
+	    @PutMapping("/{id}/role") 
 	    public ResponseEntity<?> updateUserRole(@PathVariable Long id, @RequestBody Map<String, String> request) {
 	        String newRole = request.get("role");
 
-	        // ✅ Ensure findById() returns a valid User object
+	        
 	        User user = userService.findById(id).orElse(null);
 	        if (user == null) {
 	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "User not found"));
@@ -88,7 +88,7 @@ public class UserController {
 	        user.setRole(newRole);
 	        userService.save(user);
 
-	        // ✅ Return a proper JSON response
+	       
 	        return ResponseEntity.ok(Map.of("message", "User role updated successfully"));
 	    }
 	    
@@ -116,7 +116,7 @@ public class UserController {
 	        user.setStatus(UserStatus.valueOf(status));
 	        userService.save(user);
 
-	        // ✅ Return a JSON object instead of plain text
+	       
 	        return ResponseEntity.ok(Collections.singletonMap("message", "✅ User status updated successfully."));
 	    }
 }
