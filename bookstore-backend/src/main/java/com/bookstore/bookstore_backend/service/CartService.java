@@ -18,12 +18,12 @@ public class CartService {
 	    private CartRepository cartRepository;
 
 	    @Autowired
-	    private UserRepository userRepository;  // ✅ Inject UserRepository
+	    private UserRepository userRepository;  
 
 	    @Autowired
-	    private BookRepository bookRepository;  // ✅ Inject BookRepository
+	    private BookRepository bookRepository;  
 
-	    // ✅ Get cart items for the logged-in user
+	    //  Get cart items for the logged-in user
 	    public List<Cart> getCartItems(User user) {
 	        List<Cart> cartItems = cartRepository.findByUser(user);
 	        
@@ -38,7 +38,7 @@ public class CartService {
 	    }
 
 
-	    // ✅ Add item to cart with proper user and book validation
+	    //  Add item to cart with proper user and book validation
 	    public Cart addToCart(Long userId, Long bookId, int quantity) {
 	        // Fetch user from database
 	        User user = userRepository.findById(userId)
@@ -65,7 +65,7 @@ public class CartService {
 	        }
 	    }
 
-	    // ✅ Remove item from cart (Ensures user can only delete their own cart item)
+	    //  Remove item from cart (Ensures user can only delete their own cart item)
 	    public void removeFromCart(Long cartId, User user) {
 	        Optional<Cart> cartItem = cartRepository.findById(cartId);
 
@@ -76,7 +76,7 @@ public class CartService {
 	        }
 	    }
 
-	    // ✅ Clear all cart items for a specific user
+	    //  Clear all cart items for a specific user
 	    public void clearCart(User user) {
 	        List<Cart> userCartItems = cartRepository.findByUser(user);
 	        cartRepository.deleteAll(userCartItems);
