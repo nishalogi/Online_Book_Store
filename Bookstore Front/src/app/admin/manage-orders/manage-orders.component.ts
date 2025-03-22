@@ -33,7 +33,7 @@ export class ManageOrdersComponent implements OnInit {
   updateStatus(order: Order, newStatus: string) {
     this.orderService.updateOrderStatus(order.orderId, newStatus).subscribe(() => {
       order.status = newStatus; // Update UI after successful response
-      alert('Successfully Updated ✅'); // Simple success message
+      alert('Successfully Updated '); 
     });
   }
   
@@ -41,7 +41,7 @@ export class ManageOrdersComponent implements OnInit {
   cancelOrder(orderId: number) {
     if (confirm("Are you sure you want to cancel this order?")) {
       this.orderService.cancelOrder(orderId).subscribe(() => {
-        this.orders = this.orders.filter(order => order.orderId !== orderId); // Remove from list
+        this.orders = this.orders.filter(order => order.orderId !== orderId); 
       });
     }
   }
