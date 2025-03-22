@@ -54,7 +54,7 @@ export class ManageUsersComponent implements OnInit {
     this.userService.updateUserRole(user.id, user.role).subscribe({
       next: () => {
         alert(`✅ User role updated successfully to ${user.role}!`);
-        this.loadUsers(); // Refresh the list after update
+        this.loadUsers(); 
       },
       error: (error) => {
         console.error('❌ Failed to update user role:', error);
@@ -65,9 +65,9 @@ export class ManageUsersComponent implements OnInit {
 
   changeUserStatus(user: any) {
     this.userService.updateUserStatus(user.id, user.status).subscribe({
-      next: (response: any) => {  // <-- Use 'any' to bypass TypeScript's type checking
+      next: (response: any) => { 
         console.log("✅ Success Response:", response);
-        alert(response.message); // Accessing 'message' directly
+        alert(response.message);
       },
       error: (error) => {
         console.error("❌ Error Response:", error);
