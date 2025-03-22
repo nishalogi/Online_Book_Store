@@ -9,10 +9,10 @@ import com.bookstore.bookstore_backend.model.Book;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-	// ✅ Find books by category
+	//  Find books by category
     List<Book> findByCategory(String category);
     
-    // ✅ Search books by title (case-insensitive)
+    //  Search books by title (case-insensitive)
     List<Book> findByTitleContainingIgnoreCase(String title);
     
     
