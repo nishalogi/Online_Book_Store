@@ -27,7 +27,7 @@ public class CartService {
 	    public List<Cart> getCartItems(User user) {
 	        List<Cart> cartItems = cartRepository.findByUser(user);
 	        
-	        // ✅ Ensure book details are correctly included
+	        //  Ensure book details are correctly included
 	        cartItems.forEach(cart -> {
 	            if (cart.getBook() == null) {
 	                throw new RuntimeException("Book data missing for cart item: " + cart.getId());
