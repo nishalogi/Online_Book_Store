@@ -21,7 +21,7 @@ public class EmailService {
         message.setTo(to);
         message.setSubject(subject);
         message.setText(body);
-        message.setFrom("logeshwarivijay16@gmail.com"); // ✅ Correct sender email
+        message.setFrom("Admin@example.com"); 
 
         mailSender.send(message);
     }
@@ -35,7 +35,7 @@ public class EmailService {
             helper.setSubject("Order Cancellation Notification");
             helper.setText("<p>Your order with <strong>Order ID: " + orderId + "</strong> has been canceled successfully.</p>", true);
 
-            helper.setFrom("logeshwarivijay16@gmail.com"); // ✅ Use correct sender email
+            helper.setFrom("logeshwarivijay16@gmail.com");
 
             mailSender.send(message);
             System.out.println("Cancellation email sent successfully.");
