@@ -17,7 +17,7 @@ public class WebConfig {
 	                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 	                        .allowedHeaders("*")
 	                        .allowedHeaders("Authorization", "Content-Type")
-	                        .allowCredentials(true); // ✅ Important for JWT Auth!
+	                        .allowCredentials(true); 
 	            }
 	        };
 	    }
