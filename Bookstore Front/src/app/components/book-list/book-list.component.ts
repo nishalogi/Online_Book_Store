@@ -41,7 +41,7 @@ export class BookListComponent implements OnInit {
       next: (data: Book[]) => {
         this.books = data;
         this.filteredBooks = [...this.books];
-        this.applySearch(); // ✅ Apply search after books are loaded
+        this.applySearch(); 
         this.isLoading = false;
       },
       error: (error) => {
@@ -56,10 +56,10 @@ export class BookListComponent implements OnInit {
     if (this.searchQuery.trim()) {
       this.filteredBooks = this.books.filter(book =>
         book.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        book.author.toLowerCase().includes(this.searchQuery.toLowerCase()) // ✅ Search by author too
+        book.author.toLowerCase().includes(this.searchQuery.toLowerCase()) 
       );
     } else {
-      this.filteredBooks = [...this.books]; // Reset if search is empty
+      this.filteredBooks = [...this.books];
     }
   }
 
