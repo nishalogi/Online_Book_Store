@@ -46,7 +46,7 @@ public class SecurityConfig {
 
 
 
-	                // 🔒 Admin permissions (✅ FIX: use `hasAuthority("ROLE_ADMIN")` )
+	                //  Admin permissions 
 	                .requestMatchers(HttpMethod.POST, "/api/books/add").hasAuthority("ROLE_ADMIN")  
 	                .requestMatchers(HttpMethod.PUT, "/api/books/**").hasAuthority("ROLE_ADMIN")   
 	                .requestMatchers(HttpMethod.DELETE, "/api/books/**").hasAuthority("ROLE_ADMIN") 
@@ -60,12 +60,12 @@ public class SecurityConfig {
 	                .requestMatchers("/api/users/**").hasRole("ADMIN") 
 
 
-	                // 🛒 User permissions
+	                //  User permissions
 	                .requestMatchers("/api/cart/**").hasAuthority("ROLE_USER")  
 	                .requestMatchers(HttpMethod.POST, "/api/orders/**").hasAuthority("ROLE_USER")  
 	                .requestMatchers(HttpMethod.GET, "/api/orders/user/**").hasAuthority("ROLE_USER")  
 
-	                // ✅ Allow authenticated users (both users & admins) to cancel their own orders
+	                //  Allow authenticated users (both users & admins) to cancel their own orders
 	                .requestMatchers(HttpMethod.PUT, "/api/orders/{orderId}/cancel").authenticated() 
 	                .requestMatchers("/api/orders/**").authenticated()  
 	                .requestMatchers("/api/reviews/**").authenticated()
