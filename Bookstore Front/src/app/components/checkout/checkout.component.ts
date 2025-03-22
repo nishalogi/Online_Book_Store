@@ -14,7 +14,7 @@ import { OrderService } from '../../services/order.service';
 export class CheckoutComponent  implements OnInit {
   checkoutForm: FormGroup;
   cartItems: { book: any; quantity: number }[] = [];
-  cartTotal: number = 0; // 🆕 Track total price
+  cartTotal: number = 0; //  Track total price
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +26,7 @@ export class CheckoutComponent  implements OnInit {
     this.checkoutForm = this.fb.group({
       address: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      paymentMethod: ['CASH_ON_DELIVERY', Validators.required] // ✅ Match Enum
+      paymentMethod: ['CASH_ON_DELIVERY', Validators.required] 
     });
     
   }
@@ -38,7 +38,7 @@ export class CheckoutComponent  implements OnInit {
   loadCartItems() {
     this.cartService.getCartItems().subscribe({
       next: (items) => {
-        this.cartItems = items || []; // ✅ Ensure it's always an array
+        this.cartItems = items || [];
         this.cartTotal = this.cartItems.reduce(
           (total, item) => total + (item.book?.price || 0) * item.quantity, 0
         );
@@ -67,8 +67,8 @@ export class CheckoutComponent  implements OnInit {
     }
   
     const orderData = {
-      bookIds: this.cartItems.map(item => item.book.id),  // Get book IDs from cart
-      quantities: this.cartItems.map(item => item.quantity),  // Get quantities
+      bookIds: this.cartItems.map(item => item.book.id),  
+      quantities: this.cartItems.map(item => item.quantity),  
       address: this.checkoutForm.value.address,
       phoneNumber: this.checkoutForm.value.phoneNumber,
       paymentMethod: this.checkoutForm.value.paymentMethod
@@ -77,8 +77,8 @@ export class CheckoutComponent  implements OnInit {
     this.orderService.placeOrder(userId, orderData).subscribe({
       next: () => {
         alert('✅ Order placed successfully!');
-        this.cartService.clearCart(); // ✅ Clear cart after successful order
-        this.router.navigate(['/orders']); // ✅ Redirect to orders page
+        this.cartService.clearCart(); 
+        this.router.navigate(['/orders']); 
       },
       error: () => alert('❌ Error placing order. Please try again.')
     });
