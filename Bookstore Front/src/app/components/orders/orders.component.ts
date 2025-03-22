@@ -30,7 +30,7 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-  // ✅ Fetch Orders
+  //  Fetch Orders
   fetchOrders(): void {
     this.loading = true;
     this.orderService.getUserOrders().subscribe(
@@ -52,7 +52,7 @@ export class OrdersComponent implements OnInit {
   }
   
 
-  // ✅ Get User ID from Storage
+  //  Get User ID from Storage
   private getUserId(): number | null {
     const storedUserId = localStorage.getItem('userId');
     if (!storedUserId) {
@@ -67,14 +67,14 @@ export class OrdersComponent implements OnInit {
     return userId;
   }
 
-  // ✅ Handle User ID Errors
+  //  Handle User ID Errors
   private handleUserIdError(): void {
     this.loading = false;
     this.errorMessage = 'User ID is missing or invalid. Please log in.';
     console.error(this.errorMessage);
   }
 
-  // ✅ View Order Details
+  //  View Order Details
   viewOrder(orderId: number): void {
     if (!orderId) {
       console.error("Invalid orderId:", orderId);
@@ -83,7 +83,7 @@ export class OrdersComponent implements OnInit {
     this.router.navigate(['/order-details', orderId]);
   }
 
-  // ✅ Delete Order
+  //  Delete Order
   deleteOrder(orderId: number): void {
     if (confirm('Are you sure you want to delete this order?')) {
       this.orderService.deleteOrder(orderId).subscribe(
