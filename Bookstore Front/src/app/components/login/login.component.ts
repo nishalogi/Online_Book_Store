@@ -19,9 +19,9 @@ export class LoginComponent {
     this.authService.login({ email: this.email, password: this.password }).subscribe({
       next: (response) => {
         if (response.token && response.userId) {
-          // ✅ Store token & user data properly
+          //  Store token & user data properly
           localStorage.setItem('token', response.token);
-          localStorage.setItem('userId', response.userId.toString()); // Ensure userId is stored as a string
+          localStorage.setItem('userId', response.userId.toString()); 
           localStorage.setItem('role', response.role);
 
           if (response.role === 'ROLE_ADMIN') {
@@ -29,8 +29,8 @@ export class LoginComponent {
           }
 
           alert('Login Successful!');
-          this.errorMessage = ''; // ✅ Clear error message on success
-          this.router.navigate(['/']); // ✅ Redirect to home page
+          this.errorMessage = ''; 
+          this.router.navigate(['/']);
         } else {
           this.errorMessage = 'Login failed. Invalid response from server.';
         }
@@ -48,6 +48,6 @@ export class LoginComponent {
 
   onLogout() {
     this.authService.logout();
-    window.location.reload(); // Reload to reflect logout
+    window.location.reload(); 
   }
 }
