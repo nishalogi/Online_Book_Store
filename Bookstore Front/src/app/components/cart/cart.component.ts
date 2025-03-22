@@ -62,9 +62,9 @@ removeFromCart(cartItemId: number) {
     next: () => this.loadCart(),
     error: (error) => console.error('❌ Error removing item:', error)
   });
-}// Add checkout function in cart.component.ts
+}
 checkout() {
-  this.router.navigate(['/checkout']); // ✅ Redirects to Checkout Page
+  this.router.navigate(['/checkout']); 
 }
 
 
@@ -105,11 +105,11 @@ checkout() {
       paymentMethod: this.checkoutForm.value.paymentMethod
     };
   
-    console.log('📦 Checkout Order Data:', orderData); // Debugging log
+    console.log('📦 Checkout Order Data:', orderData); 
   
     this.orderService.placeOrder(userId, orderData).subscribe({
       next: (response) => {
-        console.log('✅ Order Response:', response); // Debugging log
+        console.log('✅ Order Response:', response); 
         alert('✅ Order placed successfully!');
         this.clearCart();
         this.router.navigate(['/orders']);
